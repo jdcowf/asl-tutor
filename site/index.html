@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Spell Out Word</title>
+</head>
+<body>
+
+    <img src="https://placehold.co/400x400" id="wordDisplay"></img>
+
+<div>
+    <button onclick="spellWord(newWord())">Spell Word</button>
+    
+        <button onclick="spellWord(getWord())">Replay</button>
+</div>
+
+    <script>
+        let word = ""
+        
+        function getWord() {
+            return word
+        }
+        
+        function newWord() {
+            if (word == "Hello") {
+                word = "World"
+            } else {
+                word = "Hello"
+            }
+            return getWord()
+        }
+        
+        function getImageForLetter(c) {
+            return "https://placehold.co/400x400?text=" + c 
+ 
+        }
+        
+        function spellWord(w) {
+            const word = w;
+            const wordDisplay = document.getElementById("wordDisplay");
+            let index = 0;
+
+            const intervalId = setInterval(function() {
+                if (index < word.length) {      const currentLetter = word[index]
+
+                    wordDisplay.src = getImageForLetter(currentLetter);
+                    index++;
+                } else {
+                    clearInterval(intervalId);
+                }
+            }, 1000); // 1000 milliseconds (1 second) interval
+        }
+    </script>
+</body>
+</html>
