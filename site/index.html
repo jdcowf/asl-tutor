@@ -46,17 +46,36 @@ input:invalid {
 
     <script>
         let word = ""
+
+        let dictionary = ["hello", "world"]
+
+window.addEventListener('load', loadDict())
+
+
+function randomElementFromArray(a) {
+    return a[Math.floor(Math.random() * a.length)]
+}
+
+
+function loadDict() {
+    fetch('static/data/wordle-dictionary.json')
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (data) {
+        dictionary = data;
+    })
+    .catch(function (err) {
+        console.log('error: ' + err);
+    });
+}
         
         function getWord() {
             return word
         }
         
         function newWord() {
-            if (word == "Hello") {
-                word = "World"
-            } else {
-                word = "Hello"
-            }
+            word = randomElementFromArray(dictionary)
             return getWord()
         }
         
