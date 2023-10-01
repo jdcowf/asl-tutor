@@ -27,7 +27,21 @@ input:invalid {
 <div> 
      <button onclick="spellWord(newWord())">New Word</button>
     
-        <button onclick="spellWord(getWord())">Re-spell Word</button>
+        <button onclick="spellWord(getWord())">Re-spell Word</button> 
+</div>
+
+<div>
+  <label for="speed">Sign Speed</label>
+  <input type="range" id="speed" name="speed" min="50" max="5000" value="1000" step="50" list="markers"/>
+  
+  <datalist id="markers">
+  <option value="0"></option>
+  <option value="1000"></option>
+  <option value="2000"></option>
+  <option value="3000"></option>
+  <option value="4000"></option>
+  <option value="5000"></option>
+</datalist>
 </div>
 
     <script>
@@ -68,6 +82,8 @@ input:invalid {
             const wordDisplay = document.getElementById("wordDisplay");
             let index = 0;
 
+            const interval = document.getElementById("speed").value;
+
             const intervalId = setInterval(function() {
                 if (index < word.length) {      const currentLetter = word[index]
 
@@ -76,7 +92,7 @@ input:invalid {
                 } else {
                     clearInterval(intervalId);
                 }
-            }, 1000);
+            }, interval);
         }
     </script>
 </body>
