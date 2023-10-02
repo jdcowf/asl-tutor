@@ -13,14 +13,49 @@ input:invalid {
   background-color: lightpink;
 }
 </style>
+
+ <style>
+        /* Styles for the modal and overlay */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.7);
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        /* Style for the close button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+    
 <body>
 
-    <img src="https://placehold.co/400x400" id="wordDisplay"></img>
+    <img src="https://placehold.co/400x400" width=400 height=400 id="wordDisplay"></img>
 
 <div>    
         <label for="answer">What's the word?</label>
         
-        <input type="text" id="answer"> </input>
+        <input type="text" id="answer" required> </input>
         
 </div>
 
@@ -28,6 +63,10 @@ input:invalid {
      <button onclick="spellWord(newWord())">New Word</button>
     
         <button onclick="spellWord(getWord())">Re-spell Word</button> 
+        
+        <button onclick="openModal()">About</button> 
+        
+
 </div>
 
 <div>
@@ -43,6 +82,16 @@ input:invalid {
   <option value="5000"></option>
 </datalist>
 </div>
+
+<!-- The Modal -->
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close" id="closeModalBtn">&times;</span>
+            <h2>About</h2>
+            <p><a target="_blank" href="https://icons8.com/icon/7285/sign-language">Sign Language</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a></p>
+        </div>
+    </div>
 
     <script>
         let word = ""
@@ -89,6 +138,7 @@ function loadDict() {
 }
 
         function getImageForLetter(c) {
+            return "static/images/" + c.toLowerCase() + "-100.png"
             return "https://placehold.co/400x400?text=" + c 
  
         }
@@ -113,6 +163,33 @@ function loadDict() {
                 }
             }, interval);
         }
+    </script>
+    
+ <script>
+        // Get references to the modal and buttons
+        const modal = document.getElementById("myModal");
+        const openModalBtn = document.getElementById("openModalBtn");
+        const closeModalBtn = document.getElementById("closeModalBtn");
+
+        // Function to open the modal
+        function openModal() {
+            modal.style.display = "block";
+        }
+
+        // Function to close the modal
+        function closeModal() {
+            modal.style.display = "none";
+        }
+
+        // Event listeners for button clicks
+       closeModalBtn.addEventListener("click", closeModal);
+
+        // Close the modal if the user clicks anywhere outside the modal content
+        window.addEventListener("click", function(event) {
+            if (event.target == modal) {
+                closeModal();
+            }
+        });
     </script>
 </body>
 </html>
