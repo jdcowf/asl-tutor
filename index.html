@@ -5,74 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/png"
  href="static/images/asl-100.png">
+ <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <style>
 input:valid {
-  background-color: palegreen;
+  background-color: #d9f99d;
 }
 
 input:invalid {
-  background-color: lightpink;
+  background-color: #fecaca;
 }
+
 </style>
+  <body class="font-mono text-slate-900 bg-slate-50">
+    <main class="flex flex-col min-h-screen">
+      <header class="text-3xl bg-slate-900 text-slate-50 p-4 font-semibold">
+        ASL TUTOR
+      </header>
 
- <style>
-        /* Styles for the modal and overlay */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.7);
-        }
+      <section class="flex flex-auto grow flex-col">
 
-        .modal-content {
-            background-color: #fff;
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            max-width: 400px;
-            text-align: center;
-        }
-
-        /* Style for the close button */
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-    </style>
+    <div class="flex-auto grow">
+    <img src="https://placehold.co/100x100" width=100 height=100 id="wordDisplay" class="object center"></img>
+    </div>
     
-<body>
-
-    <img src="https://placehold.co/400x400" width=400 height=400 id="wordDisplay"></img>
-
-<div>    
+    <div class="w-full m-4">
         <label for="answer">What's the word?</label>
         
         <input type="text" id="answer" required> </input>
         
 </div>
 
-<div> 
-     <button onclick="spellWord(newWord())">New Word</button>
+<div class="w-full flex justify-between"> 
+
+<button class="bg-slate-900 hover:bg-slate-950 text-slate-50 p-4 m-4 w-2/5" onclick="spellWord(newWord())">
+    <span>New Word</span>
+  </button>
+
     
-        <button onclick="spellWord(getWord())">Re-spell Word</button> 
-        
-        <button onclick="openModal()">About</button> 
+        <button class="bg-slate-900 hover:bg-slate-950 text-slate-50 p-4 m-4 w-2/5"onclick="spellWord(getWord())">Re-spell Word</button> 
         
 
 </div>
 
-<div>
+<div class="w-full m-4 align-object-center">
   <label for="speed">Sign Speed</label>
   <input type="range" id="speed" name="speed" min="50" max="5000" value="1000" step="50" list="markers"/>
   
@@ -86,15 +63,16 @@ input:invalid {
 </datalist>
 </div>
 
-<!-- The Modal -->
-    <div id="myModal" class="modal">
-        <!-- Modal content -->
-        <div class="modal-content">
-            <span class="close" id="closeModalBtn">&times;</span>
-            <h2>About</h2>
-            <p><a target="_blank" href="https://icons8.com/icon/7285/sign-language">Sign Language</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a></p>
-        </div>
-    </div>
+
+    </section>
+    <footer class="text-sm bg-slate-900 text-slate-50 p-4 font-semibold"> 
+      Site by @<a href="https://jdcowf.github.io" class="underline">jdcowf</a>
+      <br>
+<a target="_blank" href="https://icons8.com/icon/7285/sign-language" class="underline">Sign Language</a> icon by <a target="_blank" class="underline" href="https://icons8.com">Icons8</a>
+    </footer>
+</main>
+</body>
+ 
 
     <script>
         let word = ""
@@ -142,8 +120,6 @@ function loadDict() {
 
         function getImageForLetter(c) {
             return "static/images/" + c.toLowerCase() + "-100.png"
-            return "https://placehold.co/400x400?text=" + c 
- 
         }
         
         function spellWord(w) {
@@ -166,33 +142,6 @@ function loadDict() {
                 }
             }, interval);
         }
-    </script>
-    
- <script>
-        // Get references to the modal and buttons
-        const modal = document.getElementById("myModal");
-        const openModalBtn = document.getElementById("openModalBtn");
-        const closeModalBtn = document.getElementById("closeModalBtn");
-
-        // Function to open the modal
-        function openModal() {
-            modal.style.display = "block";
-        }
-
-        // Function to close the modal
-        function closeModal() {
-            modal.style.display = "none";
-        }
-
-        // Event listeners for button clicks
-       closeModalBtn.addEventListener("click", closeModal);
-
-        // Close the modal if the user clicks anywhere outside the modal content
-        window.addEventListener("click", function(event) {
-            if (event.target == modal) {
-                closeModal();
-            }
-        });
     </script>
 </body>
 </html>
