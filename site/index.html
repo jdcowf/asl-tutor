@@ -18,22 +18,22 @@ input:invalid {
 }
 
 </style>
-  <body class="font-mono text-slate-900 bg-slate-50">
+  <body class="font-mono bg-slate-900">
     <main class="flex flex-col min-h-screen">
       <header class="text-3xl bg-slate-900 text-slate-50 p-4 font-semibold">
         ASL TUTOR
       </header>
 
-      <section class="flex flex-auto grow flex-col">
+      <section class="flex flex-auto grow flex-col text-slate-900 bg-slate-50">
 
-    <div class="flex-auto grow">
-    <img src="https://placehold.co/100x100" width=100 height=100 id="wordDisplay" class="object center"></img>
+    <div class="flex flex-auto grow items-center justify-center w-100 h-100">
+    <img src="/static/images/asl-100.png" width=100 height=100 id="wordDisplay"></img>
     </div>
     
-    <div class="w-full m-4">
+    <div class="flex flex-col justify-center m-4">
         <label for="answer">What's the word?</label>
         
-        <input type="text" id="answer" required> </input>
+        <input type="text" id="answer" required/>
         
 </div>
 
@@ -51,7 +51,7 @@ input:invalid {
 
 <div class="w-full m-4 align-object-center">
   <label for="speed">Sign Speed</label>
-  <input type="range" id="speed" name="speed" min="50" max="5000" value="1000" step="50" list="markers"/>
+  <input type="range" id="speed" name="speed" min="50" max="5000" value="1000" step="50" list="markers" style="accent-color: black"/>
   
   <datalist id="markers">
   <option value="0"></option>
