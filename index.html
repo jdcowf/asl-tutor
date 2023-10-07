@@ -155,7 +155,7 @@ function loadDict() {
 
             const interval = document.getElementById("speed").value;
 
-            const intervalId = setInterval(function() {
+function f() {
                 if (index < word.length) {      const currentLetter = word[index]
 
                     wordDisplay.src = getImageForLetter(currentLetter);
@@ -163,7 +163,11 @@ function loadDict() {
                 } else {
                     clearInterval(intervalId);
                 }
-            }, interval);
+            }
+            
+            f()
+
+            const intervalId = setInterval(f, interval);
         }
     </script>
 </body>
