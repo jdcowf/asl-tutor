@@ -1,0 +1,16 @@
+{
+  "name": "ASL Tutor",
+  "short_name": "ASL Tutor",
+  "description": "Practice your finger spelling on ASL Tutor!",
+  "icons": [
+    {
+      "src": "static/images/asl-100.png",
+      "sizes": "100x100",
+      "type": "image/png"
+    },
+  ],
+  "start_url": "/index.html",
+  "display": "standalone",
+  "theme_color": "#fafafa",
+  "background_color": "#0a0a0a"
+}
